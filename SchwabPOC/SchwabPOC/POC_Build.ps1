@@ -36,7 +36,7 @@ function BuildNetProjects
         
         if($LASTEXITCODE -eq 0)
         {
-            Write-Host "Build SUCCESS" -ForegroundColor Green
+            Write-Host "Build SUCCESS [INFO] " -ForegroundColor Green
             #Clear-Host
             break
         }
