@@ -17,14 +17,14 @@ function DeployWebapplication
     $PackageVal=$PackageDir +'\'+ $Package    
     $packageArg =  '-source:package='+'"'+$PackageVal+'"'
     $deployUrl="http://"+$ServerName+"/MSDeployAgentService"
-    Write-Host "DeployUrl:-$deployUrl"
+    Write-Host "[INFO] DeployUrl:-$deployUrl"
     $destArg='-dest:auto,computerName='+'"'+ $deployUrl+'"'+',userName='+'"'+$userName+'"'+',password='+'"'+$password+'"'+',authtype='+'"'+ $authType+'"'+',includeAcls='+'"'+$isIncldeAcls+'"'
-    Write-Host "destArg:-$destArg"
+    Write-Host "[INFO] destArg:-$destArg"
     $verbArg='-verb:sync'
     $paramArg='-setParamFile:'+'"'+$PackageParamter +'"'
     $otherArg='-whatif -allowUntrusted'    
     
-    Write-Host $msDeploy $packageArg $destArg $verbArg $paramArg $otherArg
+    Write-Host "[INFO] $msDeploy $packageArg $destArg $verbArg $paramArg $otherArg"
     
    & $msDeploy $packageArg $destArg $verbArg $paramArg 
    
@@ -35,7 +35,7 @@ try
 {
   $msDeploy=$configuration.msdelpoyexe
   
-  Write-Host "msdeploy: $msDeploy"
+  Write-Host "[INFO] msdeploy: $msDeploy"
   
   if ( $Environment -eq "Devp")
   {
@@ -68,7 +68,7 @@ try
   }
   else
   {
-    Write-Host "please select the environment values properly"
+    Write-Host "[ERROR] please select the environment values properly"
     exit 1
   }
   
