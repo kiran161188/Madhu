@@ -25,12 +25,12 @@ function BuildNetProjects
             $msbuildArguments =$msbuildArguments +  ';DeployOnBuild=true;CreatePackage=true;PublishProfile='+$publishProfile 
     }
     
-    Write-Host "Msbuild Arguments - $msbuildArguments"
+    Write-Host "[INFO] Msbuild Arguments - $msbuildArguments"
     
     if(Test-Path $sourceCodeFolder) 
     {
         $solutionToBuild =$sourceCodeFolder + '\' + $slnName
-        Write-Host "Building $solutionToBuild"
+        Write-Host "[INFO] Building $solutionToBuild"
         & $msbuild $solutionToBuild /t:rebuild /p:PlatformTarget=x86 /fl  $msbuildArguments "/flp1:logfile=$sourceCodeFolder\msbuild.log;Verbosity=Normal;Append;"
         #& $devenv $projectFileAbsPath /Rebuild
         
@@ -42,14 +42,14 @@ function BuildNetProjects
         }
         else
         {
-             Write-Host "Build Failder" -ForegroundColor Red
+             Write-Host "[ERROR] Build Failder" -ForegroundColor Red
             Clear-Host
         }
         
     }
     else
     {
-        Write-Host "File does not exist : $SourceCodePath"
+        Write-Host "[INFO] File does not exist : $SourceCodePath"
         Start-Sleep -s 5
         break
     }    
