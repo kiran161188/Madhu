@@ -68,7 +68,7 @@ try
   }
   else
   {
-    Write-Host "please select the environment values properly"
+    Write-Host "please select the environment values properly [ERROR]"
     exit 1
   }
   
